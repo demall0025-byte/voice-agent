@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дауыс Агенті | Voice Agent</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">🎙️</div>
+      <h1>Дауыс Агенті</h1>
+      <p class="subtitle">OpenRouter · Тегін AI · Дауыспен басқару</p>
+    </header>
+
+    <!-- API Key Setup -->
+    <section class="setup-card" id="setupCard">
+      <h2>API Кілтін енгізіңіз</h2>
+      <p>
+        Тегін API кілтін алу үшін:
+        <a href="https://openrouter.ai/keys" target="_blank">openrouter.ai/keys</a>
+        сайтына кіріңіз (тіркелу тегін).
+      </p>
+      <div class="input-group">
+        <input
+          type="password"
+          id="apiKeyInput"
+          placeholder="sk-or-v1-..."
+          autocomplete="off"
+        />
+        <button id="saveKeyBtn">Сақтау</button>
+      </div>
+      <div class="model-select">
+        <label>Тегін модель таңдаңыз:</label>
+        <select id="modelSelect">
+          <option value="meta-llama/llama-3.1-8b-instruct:free">Llama 3.1 8B (Тегін)</option>
+          <option value="mistralai/mistral-7b-instruct:free">Mistral 7B (Тегін)</option>
+          <option value="google/gemma-2-9b-it:free">Gemma 2 9B (Тегін)</option>
+          <option value="qwen/qwen-2-7b-instruct:free">Qwen 2 7B (Тегін)</option>
+          <option value="microsoft/phi-3-mini-128k-instruct:free">Phi-3 Mini (Тегін)</option>
+        </select>
+      </div>
+      <div class="lang-select">
+        <label>Жауап тілі:</label>
+        <select id="langSelect">
+          <option value="kk">Қазақша</option>
+          <option value="ru">Русский</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Main Agent UI -->
+    <section class="agent-card" id="agentCard" style="display:none">
+      <div class="status-bar">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">Дайын</span>
+        <button id="changeKeyBtn" class="small-btn">⚙️ Баптаулар</button>
+      </div>
+
+      <div class="conversation" id="conversation">
+        <div class="message system">
+          Сәлем! Мен дауыспен басқарылатын AI агентімін. Микрофон түймесін басып сөйлеңіз немесе мәтін жазыңыз.
+        </div>
+      </div>
+
+      <div class="input-area">
+        <textarea
+          id="textInput"
+          placeholder="Сұрағыңызды жазыңыз немесе микрофонды пайдаланыңыз..."
+          rows="2"
+        ></textarea>
+        <div class="btn-row">
+          <button id="micBtn" class="mic-btn" title="Дауыспен сөйлеу">
+            🎙️
+          </button>
+          <button id="sendBtn" class="send-btn">Жіберу ➤</button>
+          <button id="stopBtn" class="stop-btn" style="display:none">⏹ Тоқтату</button>
+          <button id="clearBtn" class="clear-btn">🗑️</button>
+        </div>
+      </div>
+
+      <div class="volume-bar" id="volumeBar">
+        <div class="volume-fill" id="volumeFill"></div>
+      </div>
+    </section>
+
+    <footer>
+      <p>OpenRouter тегін моделдері · Web Speech API · Жергілікті сақтау</p>
+    </footer>
+  </div>
+
+  <script src="agent.js"></script>
+</body>
+</html>
